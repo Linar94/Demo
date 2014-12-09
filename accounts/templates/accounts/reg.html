@@ -1,0 +1,54 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=1200px">
+	<title></title>
+	<link rel="stylesheet" type="text/less" href="{{ STATIC_URL }}css/style.css">
+	<link rel="stylesheet" type="text/less" href="{{ STATIC_URL }}css/reg.css">
+	<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+    <section class="container">
+		<div class="container-page">
+			<div class="form">
+			    <div class="row">
+                    <form action="{% url 'accounts:registration' %}" method="post">{% csrf_token %}
+                        <h3 class="dark-grey">Registration</h3>
+                        <p>{{ error }}</p>
+                        <div class="form-group col-md-12">
+                            <label>Username</label>
+                            {{ form.username }}
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>Password</label>
+                            {{ form.password }}
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>Repeat Password</label>
+                            {{ form.conf_password }}
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>Email Address</label>
+                            {{ form.email }}
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <input type="submit" value="Registration" class="btn btn-success">
+                        </div>
+
+                    </form>
+		        </div>
+			</div>
+		</div>
+	</section>
+</div>
+</body>

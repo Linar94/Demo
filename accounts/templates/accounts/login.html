@@ -1,0 +1,54 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=1200px">
+	<title></title>
+	<link rel="stylesheet" type="text/less" href="{{ STATIC_URL }}css/style.css">
+	<link rel="stylesheet" type="text/less" href="{{ STATIC_URL }}css/login.css">
+	<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
+</head>
+<body>
+    <div class="container">
+         <div class="row">
+             <div class="login-box">
+                 <form role="form" action="{% url 'accounts:login' %}" method="post">{% csrf_token %}
+                     <div class="panel panel-primary">
+                         <div class="panel-heading">
+                             <h3 class="panel-title">Authorization</h3>
+                         </div>
+                     <div class="panel-body">
+                         <div class="row">
+                             <div class="col-md-12 login-link">
+                                <a href="#">Forgot your password?</a>
+                                <a href="{% url 'accounts:registration' %}">Registration</a>
+                                     <div class="input-group">
+                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                         <input type="text" class="form-control" name='username' placeholder="Username" required autofocus />
+                                     </div>
+                                     <div class="input-group">
+                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                         <input type="password" class="form-control" name='password' placeholder="Password" required />
+                                     </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="panel-footer">
+                         <div class="row">
+                         <div class="col-md-12">
+                             <button type="submit" class="btn btn-labeled btn-success">
+                             <span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>Login</button>
+                         </div>
+                         </div>
+                     </div>
+                     </div>
+                 </form>
+             </div>
+         </div>
+    </div>
+
+</body>
