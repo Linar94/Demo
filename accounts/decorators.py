@@ -5,12 +5,12 @@ def is_anonymous(f):
         if request.user.is_anonymous():
             return f(request, **kwargs)
         else:
-            return HttpResponse('fefefef')
+            return HttpResponse('')
     return wrapper
 
 def is_not_activate(f):
     def wrapper(request, **kwargs):
-        if request.user.is_active:
+        if request.user:
             return f(request, **kwargs)
         else:
             return HttpResponse('fefefef')
