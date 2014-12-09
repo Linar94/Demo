@@ -17,8 +17,7 @@ urlpatterns = patterns('accounts.views',
     url(r'^task tr/save/$', '_task_tr_account', name='task_tr'),
 )
 
-v1_api = Api(api_name='v1')
-v1_api.register(TaskTrResource())
+v1_api = Api(api_name='v2')
 v1_api.register(UserResource())
 v1_api.register(UserProfileResource())
 
