@@ -20,7 +20,7 @@ class TaskTr(models.Model):
     task_tr_name = models.CharField(choices=tasktr, max_length=7)
     username = models.CharField(max_length=16, null=False)
     password = models.CharField(max_length=37, null=False)
-    server = models.CharField(max_length=100, null=False)
+    server = models.CharField(max_length=50, null=False)
 
     def __unicode__(self):
         return self.task_tr_name
