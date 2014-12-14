@@ -30,7 +30,6 @@ class BaseActivationView(TemplateView):
     http_method_names = ['get']
     template_name = 'accounts/activation_complete.html'
 
-    @method_decorator(is_anonymous)
     def dispatch(self, request, *args, **kwargs):
         return super(BaseActivationView, self).dispatch(request, **kwargs)
 
@@ -58,7 +57,7 @@ class BaseActivationView(TemplateView):
         return activated_user
 
     def get_success_url(self, request, activated_user):
-        return ('accounts:accounts_activation_complete', (), {})
+        return ('accounts:accounts_activation_complete')
 
 
 class Login(View, TemplateResponseMixin):
@@ -91,13 +90,6 @@ def logout(request):
     logout_user(request)
     return HttpResponseRedirect(reverse('index'))
 
-def check_password(password):
-    p = re.compile('^[a-zA-Z0-9]{8,29}[a-zA-Z0-9]$')
-    m = p.match(password)
-    if m:
-        return True
-    else:
-        return False
 
 def check_username(username):
     p = re.compile(r'^[\w.@+-]+$')
