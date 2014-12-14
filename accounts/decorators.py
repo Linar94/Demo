@@ -10,8 +10,8 @@ def is_anonymous(f):
 
 def is_not_activate(f):
     def wrapper(request, **kwargs):
-        if request.user:
+        if request.user.is_active:
             return f(request, **kwargs)
         else:
-            return HttpResponse('fefefef')
+            return HttpResponse('12')
     return wrapper
