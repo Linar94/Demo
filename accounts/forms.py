@@ -20,3 +20,6 @@ class RegistrationForm(forms.Form):
                                                              'class': 'form-control required',
                                                              'autofocus': 'true'}), label='')
 
+class Log_in(forms.Form):
+    username = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Логин'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Пароль'}), max_length=30, min_length=8)
