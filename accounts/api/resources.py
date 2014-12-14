@@ -20,11 +20,10 @@ class UserResource(ModelResource):
         authorization = Authorization()
         resource_name = 'user'
         list_allowed_methods = ['get', 'post']
-        excludes = ['email', 'password', 'is_staff', 'is_superuser']
+        excludes = ['password', 'is_staff', 'is_superuser']
         validation = Validation()
         filtering = {
             'username': ALL_WITH_RELATIONS,
-            'id': ALL_WITH_RELATIONS,
         }
 
     def prepend_urls(self):
@@ -34,8 +33,6 @@ class UserResource(ModelResource):
         ]
 
     def _api_login(self, request):
-
-        self.method_check(request, allowed=['post'])
 
         username = request.POST.get('username')
         password = request.POST.get('password')
